@@ -1,63 +1,19 @@
-let inScreen=document.querySelector("#Screen");
-let buttons=document.querySelectorAll(".number");
-let add=document.querySelector(".addition");
-let sub=document.querySelector(".subtraction");
-let per=document.querySelector(".Percentage");
-let divi=document.querySelector(".Divide");
-let mut=document.querySelector(".multiplication");
-let result=document.querySelector(".result");
-let addturnn=false;
-let subturnn=false;
-let perturnn=false;
-let diviturnn=false;
-let mutturnn=false;
-    add.onclick=function(){
-        addturnn=true;
-        subturnn=false;
-        perturnn=false;
-        diviturnn=false;
-        mutturnn=false;
+const screen=document.getElementById('Screen')
+function appendToScreen(input){
+    screen.value+=input
+}
+function ClrScr(){
+    screen.value="";
+}
+function Calculate(){
+    try{
+        screen.value=eval(screen.value);
     }
-    mut.onclick=function(){
-        addturnn=false;
-        subturnn=false;
-        perturnn=false;
-        diviturnn=false;
-        mutturnn=true;
+    catch(error){
+        screen.value="Error"
     }
-    divi.onclick=function(){
-        addturnn=false;
-        subturnn=false;
-        perturnn=false;
-        diviturnn=turn;
-        mutturnn=false;
-    }
-    per.onclick=function(){
-        addturnn=false;
-        subturnn=true;
-        perturnn=false;
-        diviturnn=false;
-        mutturnn=false;
-        
-    }
-    sub.onclick=function(){
-        addturnn=false;
-        subturnn=true;
-        perturnn=false;
-        diviturnn=false;
-        mutturnn=false;
-        
-    }
-a=0;
-res=0;
-buttons.forEach(button =>{
-    button.onclick=function(){
-        inScreen.innerText=button.innerText;
-        let b=parseInt(button.innerText);
-        if(addturnn==true){
-            res=a+b;
-            a=res;
-        }
-        inScreen.innerText=res;
-    }
-});
+}
+function del(){
+    let len=(screen.value).length;
+    screen.value=screen.value.substr(0,len-1);
+}
